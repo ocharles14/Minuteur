@@ -51,6 +51,11 @@ public class ServiceMinuteur extends Service {
                 try {
                     Thread.sleep(1000);
                     timeToGo--;
+                    // Envoi en broadcast sur les bradcastreceiver registrés
+                    Intent notif= new Intent("time.action.TIMETOGO");
+                    notif.putExtra("timetogo", timeToGo);
+                    sendBroadcast(notif);
+
                 } catch (Exception e) {
                     return;
                 }
